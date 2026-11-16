@@ -1,0 +1,31 @@
+:root { --ink: #172033; --muted: #6b7280; --primary: #5b4bdb; --nav: #202849; --soft: #f5f6fb; }
+body { color: var(--ink); background: #f8f9fc; font-family: Inter, system-ui, -apple-system, sans-serif; }
+.app-nav { background: var(--nav); }
+.navbar-brand { letter-spacing: -.02em; }
+.brand-mark { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-right: .45rem; color: white; background: #7c6cf2; border-radius: 9px; }
+.nav-link { color: rgba(255,255,255,.75) !important; }
+.nav-link:hover { color: white !important; }
+.btn-primary { --bs-btn-bg: var(--primary); --bs-btn-border-color: var(--primary); --bs-btn-hover-bg: #493bc1; --bs-btn-hover-border-color: #493bc1; }
+.page-title { font-weight: 800; letter-spacing: -.04em; }
+.eyebrow { color: var(--primary); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.section-title { font-size: 1.05rem; font-weight: 700; }
+.stat-card { display: flex; align-items: center; gap: 1rem; min-height: 126px; padding: 1.35rem; background: white; border-radius: 1rem; box-shadow: 0 .25rem 1rem rgba(28, 36, 65, .06); }
+.soft-card { background: #eeecff; }
+.stat-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 15px; font-size: 1.5rem; font-weight: 700; }
+.stat-icon.purple { color: #5b4bdb; background: #eeecff; }
+.stat-icon.blue { color: #1673b1; background: #e4f4ff; }
+.stat-label { margin: 0 0 .25rem; color: var(--muted); font-size: .82rem; }
+.stat-value { margin: 0; font-size: 1.65rem; font-weight: 800; }
+.status-text { font-size: 1.2rem; }
+.status-dot { display: inline-block; width: 9px; height: 9px; margin-right: .45rem; background: #16a36a; border-radius: 50%; vertical-align: 2px; }
+.table { --bs-table-bg: transparent; }
+.table thead th { color: var(--muted); font-size: .73rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-bottom-width: 1px; }
+.table tbody td { padding-top: 1rem; padding-bottom: 1rem; }
+.empty-state { padding: 3rem 1rem; text-align: center; }
+.empty-icon { display: grid; place-items: center; width: 58px; height: 58px; margin: 0 auto 1rem; color: var(--primary); background: #eeecff; border-radius: 18px; font-size: 1.8rem; font-weight: 700; }
+.form-label, .detail-label { color: #4b5563; font-size: .82rem; font-weight: 700; }
+.detail-label { margin-bottom: .3rem; text-transform: uppercase; letter-spacing: .05em; }
+.detail-value { margin: 0; font-size: 1rem; }
+.form-control, .form-select { padding: .7rem .85rem; border-color: #dfe3ee; }
+.form-control:focus, .form-select:focus { border-color: var(--primary); box-shadow: 0 0 0 .2rem rgba(91, 75, 219, .12); }
+@media (max-width: 575.98px) { .table { min-width: 720px; } .page-title { font-size: 1.8rem; } }

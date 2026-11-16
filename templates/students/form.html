@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ mode }} student{% endblock %}
+{% block content %}
+<div class="mb-4"><a href="{{ url_for('list_students') }}" class="small text-decoration-none">← Back to students</a><p class="eyebrow mt-4 mb-2">Student record</p><h1 class="page-title mb-1">{{ mode }} student</h1><p class="text-secondary mb-0">Enter the student details below. Required fields are marked with *.</p></div>
+<form method="post" class="card border-0 shadow-sm" novalidate>
+    <div class="card-body p-4 p-lg-5">
+        {% macro field(name, label, type='text', required=false, placeholder='') %}
+        <div class="col-md-6"><label class="form-label" for="{{ name }}">{{ label }}{% if required %} <span class="text-danger">*</span>{% endif %}</label><input type="{{ type }}" class="form-control{% if errors.get(name) %} is-invalid{% endif %}" id="{{ name }}" name="{{ name }}" value="{{ student.get(name, '') }}" placeholder="{{ placeholder }}" {% if required %}required{% endif %}>{% if errors.get(name) %}<div class="invalid-feedback">{{ errors[name] }}</div>{% endif %}</div>
+        {% endmacro %}
+        <h2 class="section-title mb-3">Basic information</h2>
+        <div class="row g-3 mb-4">
+            {{ field('roll_no', 'Roll number', required=true, placeholder='e.g. CS-001') }}
+            {{ field('email', 'Email address', type='email', required=true, placeholder='student@example.com') }}
+            {{ field('first_name', 'First name', required=true) }}
+            {{ field('last_name', 'Last name', required=true) }}
+            {{ field('phone', 'Phone number', placeholder='Optional') }}
+            {{ field('date_of_birth', 'Date of birth', type='date') }}
+        </div>
+        <h2 class="section-title mb-3">Academic information</h2>
+        <div class="row g-3 mb-4">
+            {{ field('course', 'Course / program', required=true, placeholder='e.g. Computer Science') }}
+            <div class="col-md-6"><label class="form-label" for="year">Year <span class="text-danger">*</span></label><select class="form-select{% if errors.get('year') %} is-invalid{% endif %}" id="year" name="year" required><option value="">Choose year</option>{% for option in range(1, 7) %}<option value="{{ option }}" {% if student.get('year')|string == option|string %}selected{% endif %}>Year {{ option }}</option>{% endfor %}</select>{% if errors.get('year') %}<div class="invalid-feedback">{{ errors['year'] }}</div>{% endif %}</div>
+        </div>
+        <div class="mb-4"><label class="form-label" for="address">Address</label><textarea class="form-control{% if errors.get('address') %} is-invalid{% endif %}" id="address" name="address" rows="3" placeholder="Optional address">{{ student.get('address', '') }}</textarea>{% if errors.get('address') %}<div class="invalid-feedback">{{ errors['address'] }}</div>{% endif %}</div>
+        <div class="d-flex flex-column flex-sm-row justify-content-end gap-2"><a class="btn btn-outline-secondary" href="{{ url_for('list_students') }}">Cancel</a><button class="btn btn-primary" type="submit">{{ mode }} student</button></div>
+    </div>
+</form>
+{% endblock %}
